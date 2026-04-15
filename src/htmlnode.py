@@ -42,20 +42,22 @@ class LeafNode(HTMLNode):
 
 class ParentNode(HTMLNode):
 	def __init__(self, tag, children, props = None):
-		super().init(tag, None, children, props)
+		super().__init__(tag, None, children, props)
 
 	def to_html(self):
-		if tag == None:
+		if self.tag == None:
 			raise ValueError("No tag found")
-		elif children == None:
+		elif self.children == None:
 			raise ValueError("No children")
 		else:
 			tag_string = [self.tag]
-			child_string = ""
+			child_string_list = []
 			if self.children:
-				child
+				for child in self.children:
+					child_string_list.append(child.to_html())
+				child_string = " ".join(child_string_list)
 			if self.props:
 				for item in self.props:
 					item_tag = item +"="+ self.props[item]
 					tag_string.append(item_tag)
-			html_string = f"<{" ".join(tag_string)}>{child_string}</{self.tag}>"
+			return f"<{" ".join(tag_string)}>{child_string}</{self.tag}>"
