@@ -10,16 +10,6 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 				raise Exception("Odd number of delimiters used")
 				return
 			node_text = node.text.split(delimiter)
-			### The text has been split up at this point. But how do I determine which sections are within a delimiter
-			# and which sections are not?
-			# This solution seems like it will work except for instances where there is only one delimiter and no close.
-			# For a situation like that maybe can search string to determine if there is an even number before processing?
-			# Resolved Odd number delimiters. But now a new issue:
-				# in a string with more than 2 delimiters, the current code will identify all text as within a delimiter zone
-				# because it does not distinguish between what is a starting delimiter and what is an ending delimiter.
-
-			#Instead of splitting everything at once, go through the code one segment at a time with an on/off switch to determine
-			# whether you are within or outside of a delimited section.
 			for i in range(len(node_text)):
 				if node_text[i] == "":
 					continue
@@ -31,6 +21,26 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 		else:
 			new_nodes.append(node)
 	return new_nodes
+
+def split_nodes_image(old_nodes):
+	#Takes a list of old_nodes and separates out all images into their own image nodes
+	new_nodes = []
+	for node in old_nodes:
+		images = extract_markdown_images(node.text)
+		for image in images:
+			image_node = TextNode(image[0], TextType.IMAGE, image[1])
+			new_nodes.append(image_node)
+	return new_nodes
+def split_nodes_link(old_nodes):
+	#Takes a list of old_nodes and separates out all links into their own link nodes
+	new_nodes = []
+	for node in old_nodes:
+		links = extract_markdown_links(node.text)
+		for link in links:
+			link_node = TextNode(link[0], TextType.LINK, link[1])
+
+
+
 
 def extract_markdown_images(text):
 	images = re.findall(r"!\[.*?\)", text)
