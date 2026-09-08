@@ -32,11 +32,11 @@ def markdown_to_blocks(markdown):
 		block_list[i] = block_list[i].strip()
 	return block_list
 ### This section may need some adjustment once I'm home and can look at my html references.
-def block_type_to_tag(type):
+def block_type_to_tag(type, markdown = ""):
 	match type:
 		case BlockType.HEADING:
 			header_num = 0
-			for char in text:
+			for char in markdown:
 				if char == "#":
 					header_num +=1
 				else:

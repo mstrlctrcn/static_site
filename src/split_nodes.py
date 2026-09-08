@@ -9,6 +9,7 @@ def text_to_text_nodes(text):
 	#Separate out Bold, then Italic, then Code
 	node_list = split_nodes_delimiter(split_nodes_delimiter(node_list,"**", TextType.BOLD), "_", TextType.ITALIC)
 	node_list = split_nodes_delimiter(node_list, "```", TextType.CODE)
+	return node_list
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
 	#Takes a list of old_nodes searches for the delimiter to find where text type changes.
