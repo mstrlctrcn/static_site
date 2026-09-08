@@ -29,7 +29,7 @@ class LeafNode(HTMLNode):
 		if self.value == None:
 			raise ValueError("No value found")
 		elif self.tag == None:
-				return self.value
+			return self.value
 		else:
 			tag_string = [self.tag]
 			if self.props:
