@@ -5,7 +5,7 @@ import shutil
 def static_to_public():
 	if os.path.exists("docs"):
 		shutil.rmtree("docs")
-	merge_directories("static", "docs")public
+	merge_directories("static", "docs")
 
 def merge_directories(source_dir, target_dir):
     """
