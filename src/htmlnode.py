@@ -34,7 +34,7 @@ class LeafNode(HTMLNode):
 			tag_string = [self.tag]
 			if self.props:
 				for item in self.props:
-					item_tag = item +"="+ self.props[item]
+					item_tag = item +'="'+ self.props[item] + '"'
 					tag_string.append(item_tag)
 			return f"<{" ".join(tag_string)}>{self.value}</{self.tag}>"
 	def __repr__(self):
@@ -58,6 +58,6 @@ class ParentNode(HTMLNode):
 				child_string = " ".join(child_string_list)
 			if self.props:
 				for item in self.props:
-					item_tag = item +"="+ self.props[item]
+					item_tag = item +'="'+ self.props[item] + '"'
 					tag_string.append(item_tag)
 			return f"<{" ".join(tag_string)}>{child_string}</{self.tag}>"
