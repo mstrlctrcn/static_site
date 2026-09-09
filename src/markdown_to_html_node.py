@@ -12,9 +12,12 @@ def markdown_to_html_node(markdown):
 		tag = block_type_to_tag(block_type,block)
 		#Use textnode functions to split the text block into all of its constituent leaf nodes. This list of leaf nodes
 		# will be the list of children.
-		print(f"Here are the Children: {block}")
 		children = text_to_children(block, block_type)
 		#Parent node needs: tag, children (props are optional)
+		if block_type == BlockType.CODE:
+			node = ParentNode(tag, children)
+			pre_node = ParentNode("pre", [node])
+			node_list.append(pre_node)
 		node = ParentNode(tag, children)
 		node_list.append(node)
 	return ParentNode("div", node_list)

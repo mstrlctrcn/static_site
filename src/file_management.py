@@ -3,9 +3,9 @@ import shutil
 
 
 def static_to_public():
-	if os.path.exists("public"):
-		shutil.rmtree("public")
-	merge_directories("static", "public")
+	if os.path.exists("docs"):
+		shutil.rmtree("docs")
+	merge_directories("static", "docs")public
 
 def merge_directories(source_dir, target_dir):
     """

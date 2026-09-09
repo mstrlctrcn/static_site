@@ -8,7 +8,7 @@ def text_to_text_nodes(text):
 	node_list = split_nodes_link(split_nodes_image(nodes_list))
 	#Separate out Bold, then Italic, then Code
 	node_list = split_nodes_delimiter(split_nodes_delimiter(node_list,"**", TextType.BOLD), "_", TextType.ITALIC)
-	node_list = split_nodes_delimiter(node_list, "```", TextType.CODE)
+	node_list = split_nodes_delimiter(node_list, "`", TextType.CODE)
 	return node_list
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):

@@ -45,7 +45,7 @@ def block_type_to_tag(type, markdown = ""):
 		case BlockType.PARAGRAPH:
 			return "p"
 		case BlockType.CODE:
-			return "pre"
+			return "code"
 		case BlockType.QUOTE:
 			return "blockquote"
 		case BlockType.UNORDERED_LIST:
